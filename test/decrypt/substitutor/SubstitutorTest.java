@@ -73,6 +73,6 @@ class SubstitutorTest {
         list.add(new Substitution('a', 'b'));
         Substitutor substitutor = new Substitutor(list);
         list.add(new Substitution('c', 'd'));
-        assertEquals("a", substitutor.substitute("c"));
+        assertEquals("c", substitutor.substitute("c"));
     }
 }
