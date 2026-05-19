@@ -1,10 +1,8 @@
 package decrypt.substitutor;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Substitutor {
     private final Map<Character, Character> substitutionMap;
@@ -14,13 +12,12 @@ public class Substitutor {
             throw new IllegalArgumentException("Substitutions list must not be null");
         }
         substitutionMap = new HashMap<>();
-        Set<Character> seen = new HashSet<>();
         for (Substitution substitution : substitutions) {
             if (substitution == null) {
                 throw new IllegalArgumentException("Substitution must not be null");
             }
             char oldLetter = substitution.getOldLetter();
-            if (!seen.add(oldLetter)) {
+            if (substitutionMap.containsKey(oldLetter)) {
                 throw new IllegalArgumentException("Duplicate oldLetter in substitutions: " + oldLetter);
             }
             substitutionMap.put(oldLetter, substitution.getNewLetter());

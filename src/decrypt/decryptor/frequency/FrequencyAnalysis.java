@@ -14,7 +14,7 @@ public class FrequencyAnalysis {
         Map<Character, Integer> frequencies = new HashMap<>();
         for (char c : data.toCharArray()) {
             char key = Character.isLetter(c) ? Character.toLowerCase(c) : c;
-            frequencies.merge(key, 1, Integer::sum);
+            frequencies.put(key, frequencies.getOrDefault(key, 0) + 1);
         }
         return new FrequencyAnalysisResult(frequencies);
     }
